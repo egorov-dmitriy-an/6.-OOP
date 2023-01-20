@@ -28,7 +28,7 @@ class Man {
     /**
      * Метод показывает информацию о сыновьях человека
      */
-    public void showSon(List<List> sonList) {
+    void showSon(List<List> sonList) {
         boolean status = false;
         for (List list : sonList) {
             if (list.get(1).equals(name)) {
@@ -43,7 +43,7 @@ class Man {
      * Метод показывает информацию о внуках человека
      */
 
-    public void showGrandson(List<List> grandsonList) {
+    void showGrandson(List<List> grandsonList) {
         boolean status = false;
         for (List list : grandsonList) {
             if (list.get(1).equals(name)) {
