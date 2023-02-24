@@ -1,9 +1,7 @@
 package Phonebook.Core.MVP;
+
 import Phonebook.Core.Infrastructure.Phonebook;
 import Phonebook.Core.Models.Contact;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Presenter {
 
@@ -28,22 +26,16 @@ public class Presenter {
         }
     }
 
-
-
-
-    public void showAll(){
+    public void showAll() {
         Phonebook book = model.currentBook();
-        List<Contact> contactAll = new ArrayList<>();
-        contactAll = book.getContacts();
-
-        for (int i = 0; i < contactAll.s; i++) {
-
+        for (int i = 0; i < book.count(); i++) {
+            Contact contact = book.getContact(i);
+            view.setFirstName(contact.firstName);
+            view.setLastName(contact.lastName);
+            view.setPhone(contact.phone);
+            System.out.println("--------------------");
         }
-        view.setFirstName(contactAll.firstName);
-        view.setLastName(contactAll.lastName);
-        view.setPhone(contactAll.phone);
     }
-
 
     public void add() {
         model.currentBook().add(
@@ -56,7 +48,6 @@ public class Presenter {
 
         if (model.currentBook().count() < 1) {
             model.setCurrentIndex(-1);
-
             view.setFirstName("");
             view.setLastName("");
             view.setPhone("");

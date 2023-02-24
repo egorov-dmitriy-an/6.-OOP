@@ -14,9 +14,9 @@ public class App {
         presenter.LoadFromFile();
 
         try (Scanner in = new Scanner(System.in)) {
-
             while (true) {
-                System.out.println("Commands:\n1 - prev\n2 - next\n3 - addition\n4 - delete\n5 - show all");
+                System.out.println("Commands:\n1 - Show previous contact\n2 - Show next contact" +
+                        "\n3 - Add a new contact\n4 - Delete a contact\n5 - Show all contacts");
                 String key = in.next();
                 System.out.print("\033[H\033[J");
                 switch (key) {
@@ -33,7 +33,7 @@ public class App {
                         presenter.remove();
                         break;
                     case "5":
-                        presenter.next();
+                        presenter.showAll();
                         break;
                     default:
                         System.out.println("Такой команды нет");
@@ -41,6 +41,5 @@ public class App {
                 }
             }
         }
-
     }
 }
