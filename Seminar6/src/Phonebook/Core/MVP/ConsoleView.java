@@ -27,12 +27,13 @@ public class ConsoleView {
         System.out.printf("LastName: %s\n", value);
     }
 
-    public String getDescription() {
-        System.out.printf("Description: ");
+    public String getPhone() {
+        System.out.printf("Phone: ");
         return in.nextLine();
+
     }
 
-    public void setDescription(String value) {
-        System.out.printf("Description: %s\n", value);
+    public void setPhone(String value) {
+        System.out.printf("Phone: %s\n", value);
     }
 }

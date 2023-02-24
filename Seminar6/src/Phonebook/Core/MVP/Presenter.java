@@ -1,5 +1,9 @@
 package Phonebook.Core.MVP;
+import Phonebook.Core.Infrastructure.Phonebook;
 import Phonebook.Core.Models.Contact;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Presenter {
 
@@ -20,17 +24,34 @@ public class Presenter {
 
             view.setFirstName(contact.firstName);
             view.setLastName(contact.lastName);
-            view.setDescription(contact.description);
+            view.setPhone(contact.phone);
         }
     }
 
+
+
+
+    public void showAll(){
+        Phonebook book = model.currentBook();
+        List<Contact> contactAll = new ArrayList<>();
+        contactAll = book.getContacts();
+
+        for (int i = 0; i < contactAll.s; i++) {
+
+        }
+        view.setFirstName(contactAll.firstName);
+        view.setLastName(contactAll.lastName);
+        view.setPhone(contactAll.phone);
+    }
+
+
     public void add() {
         model.currentBook().add(
-                new Contact(view.getFirstName(), view.getLastName(), view.getDescription()));
+                new Contact(view.getFirstName(), view.getLastName(), view.getPhone()));
     }
 
     public void remove() {
-        Contact contact = new Contact(view.getFirstName(), view.getLastName(), view.getDescription());
+        Contact contact = new Contact(view.getFirstName(), view.getLastName(), view.getPhone());
         model.currentBook().remove(contact);
 
         if (model.currentBook().count() < 1) {
@@ -38,7 +59,7 @@ public class Presenter {
 
             view.setFirstName("");
             view.setLastName("");
-            view.setDescription("");
+            view.setPhone("");
         } else {
             model.setCurrentIndex(model.getCurrentIndex() - 1);
             if (model.getCurrentIndex() < 0)
@@ -47,12 +68,8 @@ public class Presenter {
             Contact temp = model.currentContact();
             view.setFirstName(temp.firstName);
             view.setLastName(temp.lastName);
-            view.setDescription(temp.description);
+            view.setPhone(temp.phone);
         }
-    }
-
-    public void saveToFile() {
-        model.save();
     }
 
     public void next() {
@@ -62,7 +79,7 @@ public class Presenter {
                 Contact contact = model.currentContact();
                 view.setFirstName(contact.firstName);
                 view.setLastName(contact.lastName);
-                view.setDescription(contact.description);
+                view.setPhone(contact.phone);
             }
         }
     }
@@ -74,7 +91,7 @@ public class Presenter {
                 Contact contact = model.currentContact();
                 view.setFirstName(contact.firstName);
                 view.setLastName(contact.lastName);
-                view.setDescription(contact.description);
+                view.setPhone(contact.phone);
             }
         }
     }

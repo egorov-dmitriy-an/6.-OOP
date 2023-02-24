@@ -16,7 +16,7 @@ public class App {
         try (Scanner in = new Scanner(System.in)) {
 
             while (true) {
-                System.out.println(" 1 - prev  2 - next");
+                System.out.println("Commands:\n1 - prev\n2 - next\n3 - addition\n4 - delete\n5 - show all");
                 String key = in.next();
                 System.out.print("\033[H\033[J");
                 switch (key) {
@@ -24,6 +24,15 @@ public class App {
                         presenter.prev();
                         break;
                     case "2":
+                        presenter.next();
+                        break;
+                    case "3":
+                        presenter.add();
+                        break;
+                    case "4":
+                        presenter.remove();
+                        break;
+                    case "5":
                         presenter.next();
                         break;
                     default:
